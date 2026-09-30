@@ -1,0 +1,33 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 1.6)
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Control" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous 0.5mm Parallel Guard Ground Tracks Shielding Van Latch Circuits
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+    (clearance_class "Solenoid_Power" (clearance 1.0) (trace_width 1.20))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_12V_AVIONICS")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Sliding_Side_Door_Sense")
+  (net 4 "Rear_Cargo_Door_Sense")
+  (net 5 "Deadbolt_Solenoid_Drive_Side")
+  (net 6 "Deadbolt_Solenoid_Drive_Rear")
+
+  ;; --- Component Matrix Placements ---
+  
+  ;; U1: Multi-Channel Van Enclosure Lock Switch (Commercial Fleet Security Core)
+  (module "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" (layer "F.Cu") (at 50.0 50.0)
+    (pad "1" smd rect (at -4.445 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 1 "VCC_12V_AVIONICS"))
+    (pad "2" smd rect (at -3.175 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 3 "Sliding_Side_Door_Sense"))
+    (pad "3" smd rect (at -1.905 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 4 "Rear_Cargo_Door_Sense"))
+    (pad "4" smd rect (at -0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD")) ;; Guard Line Left
+    (pad "5" smd rect (at 0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD"))  ;; Guard Line Right
+    (pad "15" smd rect (at -3.175 2.7) (size 0.6 1.5) (layers "F.Cu") (net 5 "Deadbolt_Solenoid_Drive_Side"))
+    (pad "16" smd rect (at -4.445 2.7) (size 0.6 1.5) (layers "F.Cu") (net 6 "Deadbolt_Solenoid_Drive_Rear"))
+    (net_class "Solenoid_Power" (pins "15" "16"))
+  )
+)
