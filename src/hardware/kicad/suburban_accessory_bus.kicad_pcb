@@ -1,0 +1,33 @@
+(kicad_pcb (version 20240108) (host pcbnew)
+  (general (thickness 1.6)
+    (layers (0 "F.Cu" signal) (31 "B.Cu" signal) (44 "Edge.Cuts" user "Edge.Cuts"))
+  )
+  (setup
+    (clearance_class "Logic_Control" (clearance 0.25) (trace_width 0.25))
+    ;; COMPLIANCE: Continuous 0.5mm Parallel Guard Ground Tracks Shielding Suburban Cabin Accessories [INDEX]
+    (clearance_class "Bilateral_Guard_Ring" (clearance 0.5) (trace_width 0.50))
+    (clearance_class "Heavy_H_Bridge" (clearance 1.0) (trace_width 2.00))
+  )
+
+  (net 0 "")
+  (net 1 "VCC_12V_AVIONICS")
+  (net 2 "GND_GUARD_SHIELD")
+  (net 3 "Rear_Zone_Peltier_Cool_Sig")
+  (net 4 "Liftgate_Motor_Actuate_Sig")
+  (net 5 "Tablet_Entertainment_Data_MISO")
+  (net 6 "Rear_Cabin_Temp_Sense")
+
+  ;; --- Component Matrix Placements ---
+  
+  ;; U1: Multi-Zone Cabin Accessory Master Switch Array (Suburban Fleet Core Switch Plane)
+  (module "Housings_SOIC:SOIC-16_3.9x9.9mm_Pitch1.27mm" (layer "F.Cu") (at 50.0 50.0)
+    (pad "1" smd rect (at -4.445 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 1 "VCC_12V_AVIONICS"))
+    (pad "2" smd rect (at -3.175 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 3 "Rear_Zone_Peltier_Cool_Sig"))
+    (pad "3" smd rect (at -1.905 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 4 "Liftgate_Motor_Actuate_Sig"))
+    (pad "4" smd rect (at -0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD")) ;; Guard Line Left [INDEX]
+    (pad "5" smd rect (at 0.635 -2.7) (size 0.6 1.5) (layers "F.Cu") (net 2 "GND_GUARD_SHIELD"))  ;; Guard Line Right [INDEX]
+    (pad "15" smd rect (at -3.175 2.7) (size 0.6 1.5) (layers "F.Cu") (net 5 "Tablet_Entertainment_Data_MISO"))
+    (pad "16" smd rect (at -4.445 2.7) (size 0.6 1.5) (layers "F.Cu") (net 6 "Rear_Cabin_Temp_Sense"))
+    (net_class "Heavy_H_Bridge" (pins "2" "3"))
+  )
+)
